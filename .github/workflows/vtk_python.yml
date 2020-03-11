@@ -1,4 +1,4 @@
-name: Build and Publish vtk_python Docker
+name: vtk_python
 
 on: 
   push:
