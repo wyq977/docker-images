@@ -17,3 +17,4 @@ jobs:
         name: wyq977/vtk_python
         username: ${{ secrets.DOCKER_USERNAME }}
         password: ${{ secrets.DOCKER_PASSWORD }}
+        dockerfile: vtk_python/Dockerfile
