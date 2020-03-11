@@ -3,14 +3,8 @@ FROM ubuntu:18.04
 # Avoid warnings by switching to noninteractive
 ENV DEBIAN_FRONTEND=noninteractive
 
-# See https://gitlab.kitware.com/vtk/vtk/blob/master/Documentation/dev/build.md
-# and https://github.com/wowa/vtk-docker/blob/master/Dockerfile
-# and https://github.com/ataber/vtk_docker/blob/master/Dockerfile
-# and https://vtk.org/Wiki/VTK/Building/Linux
-
 RUN export DEBIAN_FRONTEND=noninteractive && apt-get update -qq && apt-get install -qq -y \
     # packages needed
-    # See https://gitlab.kitware.com/vtk/vtk/blob/master/Documentation/dev/build.md
     build-essential \
     cmake \
     mesa-common-dev \

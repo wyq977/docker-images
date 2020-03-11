@@ -1,3 +1,48 @@
 FROM ubuntu:18.04
 
-RUN echo hello
+# Avoid warnings by switching to noninteractive
+ENV DEBIAN_FRONTEND=noninteractive
+
+RUN export DEBIAN_FRONTEND=noninteractive && apt-get update -qq && apt-get install -qq -y \
+    # packages needed for vtk
+    build-essential \
+    cmake \
+    mesa-common-dev \
+    freeglut3-dev \
+    ninja-build \
+    git \
+    # packages required as per https://git.bsse.ethz.ch/iber/Publications/stopka-notch/blob/master/README.txt
+    libboost-dev \
+    doxygen \
+    graphviz \
+	&& rm -rf /var/lib/apt/lists/*
+
+# release branch always raise error during cmake
+WORKDIR /tmp
+RUN git clone --single-branch --branch v8.2.0 https://gitlab.kitware.com/vtk/vtk.git && \
+    mkdir /tmp/vtk-build
+
+# No in-source build
+WORKDIR /tmp/vtk-build
+RUN cmake \
+    -D CMAKE_BUILD_TYPE:STRING=Release \
+    -D CMAKE_INSTALL_PREFIX:STRING=/usr/lib/vtk \
+    /tmp/vtk
+
+# build
+RUN make --silent -j $(cat /proc/cpuinfo | grep processor | wc -l) VERBOSE=1 && \
+    make install --silent
+
+# clean up
+WORKDIR /tmp
+RUN rm -rf vtk
+
+# linked lib properly
+# https://github.com/CogChameleon/ChromaTag/issues/2
+RUN ldconfig -v
+
+ENV VTK_DIR /usr/lib/vtk
+ENV DEBIAN_FRONTEND=dialog
+
+#https://wiki.ubuntu.com/DashAsBinSh
+RUN rm /bin/sh && ln -s /bin/bash /bin/sh
