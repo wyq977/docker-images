@@ -34,6 +34,10 @@ ENV DEBIAN_FRONTEND=noninteractive
 # change in the end
 ENV DEBIAN_FRONTEND=dialog
 ```
+This could also be done via
+```bash
+RUN export DEBIAN_FRONTEND=noninteractive && apt-get update -qq && apt-get install -qq -y \
+```
 
 3. Change to `/bin/bash` in ubuntu build
 ```bash
