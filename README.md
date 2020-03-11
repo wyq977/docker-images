@@ -1,7 +1,7 @@
 # docker_images
 
-![](https://github.com/wyq977/docker_images/workflows/vtk/badge.svg)
-![](https://github.com/wyq977/docker_images/workflows/vtk_python/badge.svg)
+![https://github.com/wyq977/docker_images/actions?query=workflow%3Avtk](https://github.com/wyq977/docker_images/workflows/vtk/badge.svg)
+![https://github.com/wyq977/docker_images/actions?query=workflow%3Avtk_python](https://github.com/wyq977/docker_images/workflows/vtk_python/badge.svg)
 
 
 Automated build pipeline for Docker images
