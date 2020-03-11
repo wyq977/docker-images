@@ -1,5 +1,9 @@
 # docker_images
 
+<p align="center">
+  <a href="https://github.com/actions/toolkit"><img alt="GitHub Actions status" src="https://github.com/actions/toolkit/workflows/toolkit-unit-tests/badge.svg"></a>
+</p>
+
 Automated build pipeline for Docker images
 
 This should auto build and deploy images using github action.
