@@ -1,12 +1,14 @@
 name: vtk
 
+
 on: 
   push:
     paths:
       - 'vtk_python/Dockerfile'
       - 'vtk/Dockerfile'
       - '.github/workflows/vtk.yml'
-      
+
+
 jobs:
   build:
     runs-on: ubuntu-latest
