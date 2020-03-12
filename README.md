@@ -1,7 +1,6 @@
 # docker_images
 
 [![](https://github.com/wyq977/docker_images/workflows/vtk/badge.svg)](https://github.com/wyq977/docker_images/actions?query=workflow%3Avtk)
-[![](https://github.com/wyq977/docker_images/workflows/vtk_python/badge.svg)](https://github.com/wyq977/docker_images/actions?query=workflow%3Avtk_python)
 
 
 Automated build pipeline for Docker images
@@ -55,8 +54,12 @@ RUN rm -rf /var/lib/apt/lists/*
 ### Problem when trying to build vtk from source
 
 Build guide (official): https://gitlab.kitware.com/vtk/vtk/blob/master/Documentation/dev/build.md
+
 Build guide (official): https://vtk.org/Wiki/VTK/Building/Linux
+
 Example (vtk 8.1.2): https://github.com/wowa/vtk-docker/blob/master/Dockerfile
+
+Example (vtk 8.1.1): https://github.com/ataber/vtk_docker/blob/master/Dockerfile
 
 ### To use it with python vtk wrapper (not needed)
 

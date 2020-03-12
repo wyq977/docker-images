@@ -3,6 +3,7 @@ name: vtk
 on: 
   push:
     paths:
+      - 'vtk_python/Dockerfile'
       - 'vtk/Dockerfile'
       - '.github/workflows/vtk.yml'
       
@@ -11,10 +12,17 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@master
-    - name: Publish to Registry
+    - name: Build and Publish vtk
       uses: elgohr/Publish-Docker-Github-Action@master
       with:
         name: wyq977/vtk
         username: ${{ secrets.DOCKER_USERNAME }}
         password: ${{ secrets.DOCKER_PASSWORD }}
         dockerfile: vtk/Dockerfile
+    - name: Build and Publish vtk_python
+      uses: elgohr/Publish-Docker-Github-Action@master
+      with:
+        name: wyq977/vtk_python
+        username: ${{ secrets.DOCKER_USERNAME }}
+        password: ${{ secrets.DOCKER_PASSWORD }}
+        dockerfile: vtk_python/Dockerfile
