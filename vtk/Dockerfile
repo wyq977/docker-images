@@ -27,6 +27,7 @@ WORKDIR /tmp/vtk-build
 RUN cmake \
     -D CMAKE_BUILD_TYPE:STRING=Release \
     -D CMAKE_INSTALL_PREFIX:STRING=/usr/lib/vtk \
+    -D BUILD_SHARED_LIBS:BOOL=OFF \
     /tmp/vtk
 
 # build

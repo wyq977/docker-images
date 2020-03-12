@@ -5,6 +5,8 @@ on:
     paths:
       - 'vtk_python/Dockerfile'
       - '.github/workflows/vtk_python.yml'
+      - 'vtk/Dockerfile'
+      - '.github/workflows/vtk.yml'
       
 jobs:
   build:
