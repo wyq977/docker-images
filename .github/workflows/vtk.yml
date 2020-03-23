@@ -27,6 +27,7 @@ jobs:
     name: Build VTK Python
     runs-on: ubuntu-latest
     steps:
+      - uses: actions/checkout@master
       - name: Build and Publish vtk_python
         uses: elgohr/Publish-Docker-Github-Action@master
         with:
