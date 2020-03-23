@@ -3,19 +3,20 @@ FROM ubuntu:18.04
 # Avoid warnings by switching to noninteractive
 ENV DEBIAN_FRONTEND=noninteractive
 
-# Updating cmake
-# 1. Add Kitware APY Repository
+# Add Kitware APY Repository for newer version of cmake
+# 1. Update essentials
 RUN apt-get update -qq && apt-get install -qq -y \
     apt-transport-https ca-certificates gnupg software-properties-common wget
 # 2. Obtain a copy of our signing key:
 RUN wget -O - https://apt.kitware.com/keys/kitware-archive-latest.asc 2>/dev/null | apt-key add -
-# 3. Add the repository to your sources list and update.
-RUN apt-add-repository 'deb https://apt.kitware.com/ubuntu/ bionic main' \
-    && apt-get update -qq && apt-get install cmake
+# 3. Add the repository to your sources list and update
+RUN apt-add-repository 'deb https://apt.kitware.com/ubuntu/ bionic main' && apt-get update -qq
 
-RUN export DEBIAN_FRONTEND=noninteractive && apt-get update -qq && apt-get install -qq -y \
+# Add essential compilers for cmake
+RUN apt-get update -qq && apt-get install -qq -y \
     # packages needed for vtk
     build-essential \
+    # using the updated Kitware APT repo
     cmake \
     mesa-common-dev \
     freeglut3-dev \
@@ -25,7 +26,7 @@ RUN export DEBIAN_FRONTEND=noninteractive && apt-get update -qq && apt-get insta
     libboost-dev \
     doxygen \
     graphviz \
-	&& rm -rf /var/lib/apt/lists/*
+    && rm -rf /var/lib/apt/lists/*
 
 # release branch always raise error during cmake
 WORKDIR /tmp
