@@ -47,7 +47,7 @@ RUN make --silent -j $(cat /proc/cpuinfo | grep processor | wc -l) VERBOSE=1 && 
 
 # clean up
 WORKDIR /tmp
-RUN rm -rf vtk
+RUN rm -rf vtk && rm -rf vtk-build
 
 # linked lib properly
 # https://github.com/CogChameleon/ChromaTag/issues/2
