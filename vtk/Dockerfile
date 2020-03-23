@@ -45,5 +45,16 @@ RUN ldconfig -v
 ENV VTK_DIR /usr/lib/vtk
 ENV DEBIAN_FRONTEND=dialog
 
+# Updating cmake
+# 1. Add Kitware APY Repository
+RUN export DEBIAN_FRONTEND=noninteractive && apt-get update -qq && apt-get install -qq -y \
+    apt-transport-https ca-certificates gnupg software-properties-common wget
+# 2. Obtain a copy of our signing key:
+RUN wget -O - https://apt.kitware.com/keys/kitware-archive-latest.asc 2>/dev/null | apt-key add -
+# 3. Add the repository to your sources list and update.
+RUN apt-add-repository 'deb https://apt.kitware.com/ubuntu/ bionic main' && apt-get update -qq
+# check cmake version
+RUN cmake --version
+
 #https://wiki.ubuntu.com/DashAsBinSh
 RUN rm /bin/sh && ln -s /bin/bash /bin/sh
