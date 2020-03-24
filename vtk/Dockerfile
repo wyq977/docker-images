@@ -10,7 +10,10 @@ RUN apt-get update -qq && apt-get install -qq -y \
 # 2. Obtain a copy of our signing key:
 RUN wget -O - https://apt.kitware.com/keys/kitware-archive-latest.asc 2>/dev/null | apt-key add -
 # 3. Add the repository to your sources list and update
-RUN apt-add-repository 'deb https://apt.kitware.com/ubuntu/ bionic main' && apt-get update -qq
+RUN apt-add-repository 'deb https://apt.kitware.com/ubuntu/ bionic main'
+
+# Update git repo
+RUN add-apt-repository ppa:git-core/ppa -y
 
 # Add essential compilers for cmake
 RUN apt-get update -qq && apt-get install -qq -y \
@@ -26,6 +29,8 @@ RUN apt-get update -qq && apt-get install -qq -y \
     libboost-dev \
     doxygen \
     graphviz \
+    # codecoverage
+    lcov \
     && rm -rf /var/lib/apt/lists/*
 
 # release branch always raise error during cmake
