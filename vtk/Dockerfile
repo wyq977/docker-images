@@ -31,6 +31,7 @@ RUN apt-get update -qq && apt-get install -qq -y \
     graphviz \
     # codecoverage
     lcov \
+    curl \
     && rm -rf /var/lib/apt/lists/*
 
 # release branch always raise error during cmake
