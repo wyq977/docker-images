@@ -1,0 +1,23 @@
+name: vtk_python
+
+
+on: 
+  push:
+    paths:
+      - 'vtk_python/Dockerfile'
+      - 'vtk/Dockerfile'
+
+jobs:
+  build_vtk_python:
+    needs: [build_vtk]
+    name: Build VTK Python
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@master
+      - name: Build and Publish vtk_python
+        uses: elgohr/Publish-Docker-Github-Action@master
+        with:
+          name: wyq977/vtk_python
+          username: ${{ secrets.DOCKER_USERNAME }}
+          password: ${{ secrets.DOCKER_PASSWORD }}
+          dockerfile: vtk_python/Dockerfile
