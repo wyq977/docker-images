@@ -1,10 +1,9 @@
 name: build-and-publish-docker-images
-on:    
+
+on:
   push:
-    paths:
-      - 'vtk/Dockerfile'
-      - 'vtk_python/Dockerfile'
-      - 'lbibcell/Dockerfile'
+    branches:
+      - master
 
 jobs:
   build-vtk:
