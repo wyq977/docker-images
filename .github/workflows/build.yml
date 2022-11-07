@@ -10,7 +10,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v3
-    - name: publish-to-dockerhub
+    - name: Build and Publish to Docker Hub
       uses: elgohr/Publish-Docker-Github-Action@v4
       with:
         name: wyq977/vtk
@@ -23,7 +23,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v3
-    - name: publish-to-dockerhub
+    - name: Build and Publish to Docker Hub
       uses: elgohr/Publish-Docker-Github-Action@v4
       with:
         name: wyq977/vtk_python
@@ -35,7 +35,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v3
-    - name: publish-to-dockerhub
+    - name: Build and Publish to Docker Hub
       uses: elgohr/Publish-Docker-Github-Action@v4
       with:
         name: wyq977/lbibcell
